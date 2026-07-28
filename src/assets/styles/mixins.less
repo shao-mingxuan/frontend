@@ -1,0 +1,57 @@
+/* ===========================
+   全局 Mixins
+   =========================== */
+.ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.multi-ellipsis(@lines: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @lines;
+  -webkit-box-orient: vertical;
+}
+
+.flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scrollbar(@width: 6px, @thumb-color: #ddd, @track-color: transparent) {
+  &::-webkit-scrollbar {
+    width: @width;
+    height: @width;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: @thumb-color;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: @track-color;
+  }
+}
+
+.card-style() {
+  background: @component-background;
+  border-radius: @border-radius-base;
+  box-shadow: @box-shadow;
+  padding: @content-padding;
+}
+
+.clearfix() {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
