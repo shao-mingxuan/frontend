@@ -1,6 +1,9 @@
 {
   "name": "admin-system",
   "version": "1.0.0",
+    "engines": {
+    "node": "20.x"
+  },
   "description": "中大后台管理系统",
   "private": true,
   "scripts": {
