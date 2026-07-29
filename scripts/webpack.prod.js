@@ -1,8 +1,14 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
+const dotenv = require('dotenv');
+const path = require('path');
+
+const envFile = path.resolve(__dirname, '..', `.env.${process.env.NODE_ENV || 'production'}`);
+const envVars = dotenv.config({ path: envFile }).parsed || {};
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = (env) =>
@@ -73,6 +79,9 @@ module.exports = (env) =>
       },
     },
     plugins: [
+      new webpack.DefinePlugin({
+        'process.env.API_BASE_URL': JSON.stringify(envVars.API_BASE_URL || process.env.API_BASE_URL || '/api'),
+      }),
       new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash:8].css',
         chunkFilename: 'css/[name].[contenthash:8].chunk.css',
