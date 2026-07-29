@@ -7,7 +7,7 @@ export const APP_CONFIG = {
   DEFAULT_LANGUAGE: 'zh-CN',
 
   // API
-  API_BASE_URL: '/api',
+  API_BASE_URL: process.env.API_BASE_URL || '/api',
   API_TIMEOUT: 15000,
 
   // Token

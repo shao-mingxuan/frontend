@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_ENV: development          # ← 关键：确保安装 devDependencies
+      API_BASE_URL: /api   
     steps:
       - uses: actions/checkout@v4
 

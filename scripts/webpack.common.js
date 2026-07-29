@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
+const webpack = require('webpack');                     
 
 const resolve = (dir) => path.resolve(__dirname, '..', dir);
 
@@ -73,6 +74,10 @@ module.exports = {
       typescript: {
         configFile: resolve('tsconfig.json'),
       },
+    }),
+    // 注入环境变量
+    new webpack.DefinePlugin({
+      'process.env.API_BASE_URL': JSON.stringify(process.env.API_BASE_URL || '/api'),
     }),
   ],
 };
