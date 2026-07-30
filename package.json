@@ -6,6 +6,7 @@
   },
   "description": "中大后台管理系统",
   "private": true,
+  "sideEffects": false,
   "scripts": {
     "dev": "webpack serve --mode development --config scripts/webpack.dev.js",
     "build": "webpack --mode production --config scripts/webpack.prod.js",

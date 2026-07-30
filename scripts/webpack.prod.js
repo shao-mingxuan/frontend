@@ -24,6 +24,11 @@ module.exports = (env) =>
     },
     optimization: {
       minimize: true,
+      providedExports: true,
+      usedExports: true,
+      concatenateModules: true,// 等价于 new webpack.optimize.ModuleConcatenationPlugin()
+      innerGraph: true,
+      sideEffects: true,
       minimizer: [
         new TerserPlugin({
           parallel: true,
