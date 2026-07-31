@@ -14,7 +14,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = (env) =>
   merge(common, {
     mode: 'production',
-    devtool: 'hidden-source-map',
+    devtool: false,
     output: {
       path: require('path').resolve(__dirname, '..', 'dist'),
       filename: 'js/[name].[contenthash:8].js',
