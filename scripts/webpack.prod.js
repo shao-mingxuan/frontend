@@ -10,6 +10,8 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CompressionPlugin = require('compression-webpack-plugin');
+const themeConfig = require('./theme.config');
 
 module.exports = (env) =>
   merge(common, {
@@ -92,6 +94,12 @@ module.exports = (env) =>
         chunkFilename: 'css/[name].[contenthash:8].chunk.css',
       }),
       env?.analyze && new BundleAnalyzerPlugin(),
+      new CompressionPlugin({
+        algorithm: 'gzip',
+        test: /\.(js|css|html|svg)$/,
+        threshold: 10240,
+        minRatio: 0.8,
+      }),
     ].filter(Boolean),
     module: {
       rules: [
@@ -125,9 +133,7 @@ module.exports = (env) =>
               options: {
                 lessOptions: {
                   javascriptEnabled: true,
-                  modifyVars: {
-                    '@primary-color': '#1890ff',
-                  },
+                  modifyVars: themeConfig.modifyVars,
                 },
               },
             },
@@ -155,9 +161,7 @@ module.exports = (env) =>
               options: {
                 lessOptions: {
                   javascriptEnabled: true,
-                  modifyVars: {
-                    '@primary-color': '#1890ff',
-                  },
+                  modifyVars: themeConfig.modifyVars,
                 },
               },
             },
@@ -175,9 +179,7 @@ module.exports = (env) =>
               options: {
                 lessOptions: {
                   javascriptEnabled: true,
-                  modifyVars: {
-                    '@primary-color': '#1890ff',
-                  },
+                  modifyVars: themeConfig.modifyVars,
                 },
               },
             },

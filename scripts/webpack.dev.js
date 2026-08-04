@@ -1,5 +1,6 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
+const themeConfig = require('./theme.config');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -65,9 +66,7 @@ module.exports = merge(common, {
             options: {
               lessOptions: {
                 javascriptEnabled: true,
-                modifyVars: {
-                  '@primary-color': '#1890ff',
-                },
+                modifyVars: themeConfig.modifyVars,
               },
             },
           },
@@ -97,9 +96,7 @@ module.exports = merge(common, {
             options: {
               lessOptions: {
                 javascriptEnabled: true,
-                modifyVars: {
-                  '@primary-color': '#1890ff',
-                },
+                modifyVars: themeConfig.modifyVars,
               },
             },
           },
@@ -119,9 +116,7 @@ module.exports = merge(common, {
             options: {
               lessOptions: {
                 javascriptEnabled: true,
-                modifyVars: {
-                  '@primary-color': '#1890ff',
-                },
+                modifyVars: themeConfig.modifyVars,
               },
             },
           },
